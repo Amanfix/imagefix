@@ -18,7 +18,7 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ messages }) => {
   }, [messages]);
 
   return (
-    <div className="text-center text-gray-400 p-8 flex flex-col items-center justify-center animate-fade-in">
+    <div className="text-center text-gray-600 dark:text-gray-400 p-8 flex flex-col items-center justify-center animate-fade-in">
       {/* A more visually interesting spinner */}
       <svg className="w-16 h-16 animate-spin text-brand-purple" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
          <circle
@@ -42,7 +42,7 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ messages }) => {
       <p className="mt-6 text-lg font-semibold transition-opacity duration-500 ease-in-out">
         {messages[currentMessageIndex]}
       </p>
-      <p className="mt-2 text-sm text-gray-500">
+      <p className="mt-2 text-sm text-gray-500 dark:text-gray-500">
         This can take a moment, please be patient.
       </p>
     </div>

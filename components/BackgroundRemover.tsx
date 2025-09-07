@@ -22,7 +22,7 @@ const fileToBase64 = (file: File): Promise<{ base64: string; mimeType: string }>
 };
 
 const UploadPlaceholder = () => (
-    <div className="w-full h-full border-2 border-dashed border-gray-600 rounded-lg flex flex-col items-center justify-center text-gray-500 p-4 hover:bg-gray-700/50 hover:border-gray-500 transition-colors">
+    <div className="w-full h-full border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex flex-col items-center justify-center text-gray-500 dark:text-gray-500 p-4 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 hover:border-gray-400 dark:hover:border-gray-500 transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
@@ -91,9 +91,9 @@ const BackgroundRemover: React.FC = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6 bg-gray-800 rounded-xl shadow-lg">
+        <div className="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-300">
             <div className="text-center mb-8">
-                <div className="relative w-full max-w-md mx-auto h-48 bg-gray-900 rounded-lg">
+                <div className="relative w-full max-w-md mx-auto h-48 bg-gray-100 dark:bg-gray-900 rounded-lg">
                     <input 
                         type="file" 
                         onChange={handleFileChange} 
@@ -115,9 +115,9 @@ const BackgroundRemover: React.FC = () => {
                 </button>
             </div>
             
-            {error && <div className="text-center text-red-400 bg-red-900/50 p-3 rounded-lg my-6">{error}</div>}
+            {error && <div className="text-center text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/50 p-3 rounded-lg my-6">{error}</div>}
 
-            <div className="w-full max-w-2xl mx-auto bg-gray-900 rounded-lg flex flex-col items-center justify-center overflow-hidden min-h-[24rem]">
+            <div className="w-full max-w-2xl mx-auto bg-gray-100 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-center overflow-hidden min-h-[24rem] transition-colors duration-300">
                 {isLoading && (
                     <LoadingIndicator messages={removerMessages} />
                 )}
@@ -138,7 +138,7 @@ const BackgroundRemover: React.FC = () => {
                 )}
 
                 {!resultImageUrl && !isLoading && (
-                    <div className="text-center text-gray-500 p-8">
+                    <div className="text-center text-gray-500 dark:text-gray-500 p-8">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>

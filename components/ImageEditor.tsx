@@ -89,7 +89,7 @@ const ImageEditor: React.FC = () => {
   };
 
   const UploadPlaceholder = () => (
-    <div className="w-full h-full border-2 border-dashed border-gray-600 rounded-lg flex flex-col items-center justify-center text-gray-500 p-4">
+    <div className="w-full h-full border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex flex-col items-center justify-center text-gray-500 dark:text-gray-500 p-4">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
@@ -99,12 +99,12 @@ const ImageEditor: React.FC = () => {
   );
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-gray-800 rounded-xl shadow-lg">
+    <div className="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-300">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Column: Upload & Original Image */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-white">1. Upload Image</h2>
-          <div className="relative w-full h-80 bg-gray-900 rounded-lg">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">1. Upload Image</h2>
+          <div className="relative w-full h-80 bg-gray-100 dark:bg-gray-900 rounded-lg">
             <input 
                 type="file" 
                 onChange={handleFileChange} 
@@ -119,12 +119,12 @@ const ImageEditor: React.FC = () => {
 
         {/* Right Column: Prompt & Edited Image */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-white">2. Describe Your Edit</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">2. Describe Your Edit</h2>
            <textarea
             rows={4}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-brand-purple focus:border-brand-purple transition"
+            className="w-full bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:ring-2 focus:ring-brand-purple focus:border-brand-purple transition"
             placeholder="e.g., Add a futuristic helmet to the person."
             disabled={!originalImageFile}
           />
@@ -140,9 +140,9 @@ const ImageEditor: React.FC = () => {
       
       {/* Result Section */}
       <div className="mt-10">
-        {error && <div className="text-center text-red-400 bg-red-900/50 p-3 rounded-lg mb-6">{error}</div>}
+        {error && <div className="text-center text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/50 p-3 rounded-lg mb-6">{error}</div>}
         
-        <div className="w-full max-w-2xl mx-auto bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden min-h-[30rem]">
+        <div className="w-full max-w-2xl mx-auto bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden min-h-[30rem] transition-colors duration-300">
             {isLoading && (
                 <LoadingIndicator messages={editingMessages} />
             )}
@@ -150,7 +150,7 @@ const ImageEditor: React.FC = () => {
             {editedImage?.imageUrl && !isLoading && (
                 <div className="animate-fade-in text-center p-4">
                   <img src={editedImage.imageUrl} alt="Edited" className="w-full h-full object-contain" />
-                  {editedImage.text && <p className="mt-4 text-sm text-gray-300">{editedImage.text}</p>}
+                  {editedImage.text && <p className="mt-4 text-sm text-gray-500 dark:text-gray-300">{editedImage.text}</p>}
                    <button
                         onClick={handleDownload}
                         className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg"
@@ -164,7 +164,7 @@ const ImageEditor: React.FC = () => {
             )}
 
             {!editedImage?.imageUrl && !isLoading && (
-                <div className="text-center text-gray-500 p-8">
+                <div className="text-center text-gray-500 dark:text-gray-500 p-8">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
