@@ -1,0 +1,5 @@
+{
+  "name": "Imagfix",
+  "description": "Imagfix is an advanced AI-powered photo application to generate and edit images. Use the Image Generator to create stunning visuals from text prompts, and the Image Editor, powered by Nano Banana, to modify your photos with simple instructions.",
+  "requestFramePermissions": []
+}
