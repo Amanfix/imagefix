@@ -39,10 +39,10 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ messages }) => {
           strokeLinecap="round"
         />
       </svg>
-      <p className="mt-6 text-lg font-semibold transition-opacity duration-500 ease-in-out">
+      <p className="mt-6 text-xl font-semibold transition-opacity duration-500 ease-in-out">
         {messages[currentMessageIndex]}
       </p>
-      <p className="mt-2 text-sm text-gray-500 dark:text-gray-500">
+      <p className="mt-2 text-base text-gray-500 dark:text-gray-500">
         This can take a moment, please be patient.
       </p>
     </div>

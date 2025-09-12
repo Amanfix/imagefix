@@ -102,7 +102,7 @@ const ImageGenerator: React.FC = () => {
     <div className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-300">
       <div className="space-y-6">
         <div>
-          <label htmlFor="prompt" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
+          <label htmlFor="prompt" className="block text-base font-medium text-gray-600 dark:text-gray-300 mb-2">
             Your Prompt
           </label>
           <textarea
@@ -110,13 +110,13 @@ const ImageGenerator: React.FC = () => {
             rows={3}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            className="w-full bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:ring-2 focus:ring-brand-purple focus:border-brand-purple transition"
+            className="w-full bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:ring-2 focus:ring-brand-purple focus:border-brand-purple transition"
             placeholder="e.g., A futuristic cityscape at sunset, with flying cars and neon lights."
           />
         </div>
 
         <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">
+            <label className="block text-base font-medium text-gray-600 dark:text-gray-300">
                 Reference Image (Optional)
             </label>
             {referenceImageUrl ? (
@@ -146,7 +146,7 @@ const ImageGenerator: React.FC = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                         </svg>
-                        <span className="mt-1 block text-sm">Upload an image</span>
+                        <span className="mt-1 block text-base">Upload an image</span>
                     </label>
                 </div>
             )}
@@ -154,7 +154,7 @@ const ImageGenerator: React.FC = () => {
 
 
         <div>
-          <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
+          <label className="block text-base font-medium text-gray-600 dark:text-gray-300 mb-2">
             Aspect Ratio
           </label>
           <div className="flex flex-wrap gap-2">
@@ -162,7 +162,7 @@ const ImageGenerator: React.FC = () => {
               <button
                 key={ratio}
                 onClick={() => setAspectRatio(ratio)}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`px-4 py-2 text-base font-medium rounded-md transition-colors ${
                   aspectRatio === ratio
                     ? 'bg-brand-purple text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
@@ -178,7 +178,7 @@ const ImageGenerator: React.FC = () => {
           <button
             onClick={handleGenerate}
             disabled={isLoading}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-brand-purple hover:bg-brand-purple-light disabled:bg-gray-600 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg disabled:cursor-not-allowed"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-lg bg-brand-purple hover:bg-brand-purple-light disabled:bg-gray-600 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg disabled:cursor-not-allowed"
           >
             {isLoading ? <><Spinner className="mr-2" /> Generating...</> : 'Generate Image'}
           </button>
@@ -213,7 +213,7 @@ const ImageGenerator: React.FC = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <p className="mt-2">Your generated image will appear here.</p>
+                <p className="mt-4 text-lg">Your generated image will appear here.</p>
              </div>
           )}
         </div>

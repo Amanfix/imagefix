@@ -26,8 +26,8 @@ const UploadPlaceholder = () => (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
-        <p className="mt-2 text-center">Click to upload or drag & drop</p>
-        <p className="text-xs mt-1 text-center">PNG, JPG, WEBP (Max 4MB)</p>
+        <p className="mt-2 text-center text-lg">Click to upload or drag & drop</p>
+        <p className="text-sm mt-1 text-center">PNG, JPG, WEBP (Max 4MB)</p>
     </div>
 );
 
@@ -109,7 +109,7 @@ const BackgroundRemover: React.FC = () => {
                 <button
                     onClick={handleRemoveBackground}
                     disabled={isLoading || !originalImageFile}
-                    className="mt-6 w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-brand-purple hover:bg-brand-purple-light disabled:bg-gray-600 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg disabled:cursor-not-allowed"
+                    className="mt-6 w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-lg bg-brand-purple hover:bg-brand-purple-light disabled:bg-gray-600 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg disabled:cursor-not-allowed"
                 >
                     {isLoading ? <><Spinner className="mr-2" /> Removing Background...</> : 'Remove Background'}
                 </button>
@@ -142,7 +142,7 @@ const BackgroundRemover: React.FC = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
-                        <p className="mt-2">The result will appear here.</p>
+                        <p className="mt-4 text-lg">The result will appear here.</p>
                     </div>
                 )}
             </div>

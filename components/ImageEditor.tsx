@@ -93,8 +93,8 @@ const ImageEditor: React.FC = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
-        <p className="mt-2 text-center">Click to upload or drag & drop</p>
-        <p className="text-xs mt-1 text-center">PNG, JPG, WEBP (Max 4MB)</p>
+        <p className="mt-2 text-center text-lg">Click to upload or drag & drop</p>
+        <p className="text-sm mt-1 text-center">PNG, JPG, WEBP (Max 4MB)</p>
     </div>
   );
 
@@ -103,7 +103,7 @@ const ImageEditor: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Column: Upload & Original Image */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">1. Upload Image</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">1. Upload Image</h2>
           <div className="relative w-full h-80 bg-gray-100 dark:bg-gray-900 rounded-lg">
             <input 
                 type="file" 
@@ -119,19 +119,19 @@ const ImageEditor: React.FC = () => {
 
         {/* Right Column: Prompt & Edited Image */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">2. Describe Your Edit</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">2. Describe Your Edit</h2>
            <textarea
             rows={4}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            className="w-full bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:ring-2 focus:ring-brand-purple focus:border-brand-purple transition"
+            className="w-full bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:ring-2 focus:ring-brand-purple focus:border-brand-purple transition"
             placeholder="e.g., Add a futuristic helmet to the person."
             disabled={!originalImageFile}
           />
           <button
             onClick={handleEdit}
             disabled={isLoading || !originalImageFile}
-            className="w-full inline-flex items-center justify-center px-6 py-3 bg-brand-purple hover:bg-brand-purple-light disabled:bg-gray-600 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg disabled:cursor-not-allowed"
+            className="w-full inline-flex items-center justify-center px-6 py-3 text-lg bg-brand-purple hover:bg-brand-purple-light disabled:bg-gray-600 text-white font-bold rounded-lg transition-colors duration-300 shadow-lg disabled:cursor-not-allowed"
           >
             {isLoading ? <><Spinner className="mr-2" /> Editing...</> : 'Apply Edit'}
           </button>
@@ -168,7 +168,7 @@ const ImageEditor: React.FC = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
-                    <p className="mt-2">Your edited image will appear here.</p>
+                    <p className="mt-4 text-lg">Your edited image will appear here.</p>
                 </div>
             )}
         </div>

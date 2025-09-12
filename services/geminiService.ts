@@ -38,23 +38,41 @@ const getErrorMessage = (error: any, context: 'generating' | 'editing' | 'removi
 
 export const generateImage = async (prompt: string, aspectRatio: string): Promise<string> => {
   try {
-    const response = await ai.models.generateImages({
-      model: 'imagen-4.0-generate-001',
-      prompt: prompt,
+    // Switched from `generateImages` with Imagen to `generateContent` with gemini-2.5-flash-image-preview
+    // to avoid the billing requirement associated with the Imagen API.
+    const fullPrompt = `${prompt}. The output image must have an aspect ratio of ${aspectRatio}.`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash-image-preview',
+      contents: {
+        parts: [
+          {
+            text: fullPrompt,
+          },
+        ],
+      },
       config: {
-        numberOfImages: 1,
-        outputMimeType: 'image/jpeg',
-        aspectRatio: aspectRatio as "1:1" | "3:4" | "4:3" | "9:16" | "16:9",
+        responseModalities: [Modality.IMAGE],
       },
     });
 
-    if (response.generatedImages && response.generatedImages.length > 0) {
-      const base64ImageBytes: string = response.generatedImages[0].image.imageBytes;
-      return `data:image/jpeg;base64,${base64ImageBytes}`;
-    } else {
-      // This case handles a successful API call that still returns no image.
-      throw new Error("The model did not generate an image. This could be due to the prompt's content. Please try a different prompt.");
+    let imageUrl: string | null = null;
+    if (response.candidates && response.candidates.length > 0) {
+      for (const part of response.candidates[0].content.parts) {
+        if (part.inlineData) {
+          const base64ImageBytes = part.inlineData.data;
+          const imageMimeType = part.inlineData.mimeType;
+          imageUrl = `data:${imageMimeType};base64,${base64ImageBytes}`;
+          break; // Found the image, no need to continue
+        }
+      }
     }
+    
+    if (!imageUrl) {
+        throw new Error("The AI did not return an image. This could be due to the prompt's content. Please try a different prompt.");
+    }
+
+    return imageUrl;
   } catch (error) {
     throw new Error(getErrorMessage(error, 'generating'));
   }

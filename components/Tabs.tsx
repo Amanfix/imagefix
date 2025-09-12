@@ -19,7 +19,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab }) => {
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`w-full py-2.5 text-sm font-semibold leading-5 rounded-md transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-opacity-75
+          className={`w-full py-2.5 text-base font-semibold leading-5 rounded-md transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-opacity-75
             ${
               activeTab === tab.id
                 ? 'bg-brand-purple text-white shadow'
